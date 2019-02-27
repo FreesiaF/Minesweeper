@@ -28,7 +28,7 @@ void setup ()
 }
 public void setBombs()
 {
-    for(int i = 0; i < 200; i++)
+    for(int i = 0; i < 50; i++)
     {
     int row = (int)(Math.random()*20);
     int col = (int)(Math.random()*20);
@@ -93,7 +93,14 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        if(mouseButton == RIGHT)
+            if(marked == false)
+                clicked = false;
+        else if(countBombs(r,c)>0)
+            label = ""+countBombs(r,c);
+    
+    
+ 
     }
 
     public void draw () 
@@ -132,7 +139,6 @@ public class MSButton
             }
         }
         return numBombs;
-        System.out.print(numBombs);
     }
 }
 
