@@ -28,7 +28,7 @@ void setup ()
 }
 public void setBombs()
 {
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 50; i++)
     {
     int row = (int)(Math.random()*20);
     int col = (int)(Math.random()*20);
@@ -95,19 +95,23 @@ public class MSButton
 
             clicked = true;
 
-        if(mouseButton == RIGHT && marked == false)
+        if(mouseButton == RIGHT && marked == true)
             {
+                marked = false;
                 clicked = false;
             }
-            
-
-
-            
+               
         else if(clicked == true && bombs.contains(this))
             displayLosingMessage();
-        else if(countBombs(r,c)>0)
-            label = ""+countBombs(r,c);
+
+        else if(countBombs(r,c)>0){
+            label = "" +countBombs(r,c);
+            System.out.println(countBombs(r,c));            
+        }
+
+
         else{
+
            for (int x = r-1; x <r+1; x++) 
                 for(int y = c-1; y<c+1; y++)
                     if(isValid(x,y) == true)
@@ -149,7 +153,7 @@ public class MSButton
         int numBombs = 0;
         for(int r = row-1; r<row+1;r++){
             for(int c = col-1; c<col+1;c++){
-                if(isValid(row,col)== true && !(bombs.contains(buttons[r][c])))
+                if(isValid(row,col)== true && (bombs.contains(buttons[r][c])))
                     numBombs++;
             }
         }
