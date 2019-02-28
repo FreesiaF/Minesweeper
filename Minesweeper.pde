@@ -28,7 +28,7 @@ void setup ()
 }
 public void setBombs()
 {
-    for(int i = 0; i < 50; i++)
+    for(int i = 0; i < 10; i++)
     {
     int row = (int)(Math.random()*20);
     int col = (int)(Math.random()*20);
@@ -54,7 +54,7 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    //your code here
+;
 }
 public void displayWinningMessage()
 {
@@ -92,13 +92,28 @@ public class MSButton
     
     public void mousePressed () 
     {
-        clicked = true;
-        if(mouseButton == RIGHT)
-            if(marked == false)
+
+            clicked = true;
+
+        if(mouseButton == RIGHT && marked == false)
+            {
                 clicked = false;
+            }
+            
+
+
+            
+        else if(clicked == true && bombs.contains(this))
+            displayLosingMessage();
         else if(countBombs(r,c)>0)
             label = ""+countBombs(r,c);
-    
+        else{
+           for (int x = r-1; x <r+1; x++) 
+                for(int y = c-1; y<c+1; y++)
+                    if(isValid(x,y) == true)
+                       buttons[x][y].mousePressed();
+        } 
+
     
  
     }
