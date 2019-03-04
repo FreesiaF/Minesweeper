@@ -93,11 +93,10 @@ public class MSButton
     public void mousePressed () 
     {
 
-            clicked = true;
+        clicked = true;
 
-        if(mouseButton == RIGHT && marked == true)
+        if(mouseButton == RIGHT && marked == false)
             {
-                marked = false;
                 clicked = false;
             }
                
@@ -112,10 +111,11 @@ public class MSButton
 
         else{
 
-           for (int x = r-1; x <r+1; x++) 
-                for(int y = c-1; y<c+1; y++)
-                    if(isValid(x,y) == true)
-                       buttons[x][y].mousePressed();
+           for (int x = r-1; x <=r+1; x++) 
+                for(int y = c-1; y<=c+1; y++)
+                    if(isValid(x,y) == true && buttons[x][y].isMarked()==false)
+                        buttons[x][y].mousePressed();
+      
         } 
 
     
@@ -151,8 +151,8 @@ public class MSButton
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
-        for(int r = row-1; r<row+1;r++){
-            for(int c = col-1; c<col+1;c++){
+        for(int r = row-1; r<=row+1;r++){
+            for(int c = col-1; c<=col+1;c++){
                 if(isValid(row,col)== true && (bombs.contains(buttons[r][c])))
                     numBombs++;
             }
