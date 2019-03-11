@@ -55,10 +55,11 @@ public boolean isWon()
 public void displayLosingMessage()
 {
 
+    buttons[r][c].setLabel("you");
 }
 public void displayWinningMessage()
 {
-    //your code here
+
 }
 
 public class MSButton
@@ -96,14 +97,12 @@ public class MSButton
         clicked = true;
         if(mouseButton == RIGHT)
         {
-            if(marked == true && clicked == true)
-                marked =false; // if already clicked
-            if(marked == false)
-                clicked = false;
-
-            marked = true;        
+             marked = !marked;
+            if(marked==false)
+                clicked =false; 
         }
 
+    
 
      
         else if(clicked == true && bombs.contains(this))
