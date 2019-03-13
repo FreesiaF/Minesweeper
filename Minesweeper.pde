@@ -25,6 +25,7 @@ void setup ()
     
     
     setBombs();
+
 }
 public void setBombs()
 {
@@ -49,16 +50,28 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
+
     return false;
 }
 public void displayLosingMessage()
-{
+{   
 
-    buttons[r][c].setLabel("you");
+    buttons[9][6].setLabel("Y");
+    buttons[9][7].setLabel("O");
+    buttons[9][8].setLabel("U");
+    buttons[9][10].setLabel("L");
+    buttons[9][11].setLabel("O");
+    buttons[9][12].setLabel("S");
+    buttons[9][13].setLabel("E");
 }
 public void displayWinningMessage()
 {
+    buttons[9][6].setLabel("Y");
+    buttons[9][7].setLabel("O");
+    buttons[9][8].setLabel("U");
+    buttons[9][10].setLabel("W");
+    buttons[9][11].setLabel("I");
+    buttons[9][12].setLabel("N");
 
 }
 
@@ -103,10 +116,11 @@ public class MSButton
         }
 
     
-
-     
         else if(clicked == true && bombs.contains(this))
+        {
             displayLosingMessage();
+        }
+
 
         else if(countBombs(r,c)>0){
             label = "" +countBombs(r,c);           
