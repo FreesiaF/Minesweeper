@@ -50,25 +50,35 @@ public void draw ()
 }
 public boolean isWon()
 {
-
-    return false;
+    for(int i = 0; i < bombs.size(); i++)
+        if(!(bombs.get(i).isMarked() == true))
+            return false;
+    return true;
 }
 public void displayLosingMessage()
-{   
+{  
 
     buttons[9][6].setLabel("Y");
     buttons[9][7].setLabel("O");
     buttons[9][8].setLabel("U");
+    buttons[9][9].setLabel("");
     buttons[9][10].setLabel("L");
     buttons[9][11].setLabel("O");
     buttons[9][12].setLabel("S");
     buttons[9][13].setLabel("E");
+
+    for(int i = 0; i < bombs.size(); i++)
+    { 
+        bombs.get(i).draw();    
+    }
+
 }
 public void displayWinningMessage()
 {
     buttons[9][6].setLabel("Y");
     buttons[9][7].setLabel("O");
     buttons[9][8].setLabel("U");
+    buttons[9][9].setLabel("");
     buttons[9][10].setLabel("W");
     buttons[9][11].setLabel("I");
     buttons[9][12].setLabel("N");
