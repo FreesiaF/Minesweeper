@@ -29,7 +29,7 @@ void setup ()
 }
 public void setBombs()
 {
-    for(int i = 0; i < 80; i++)
+    for(int i = 0; i < 70; i++)
     {
     int row = (int)(Math.random()*NUM_ROWS);
     int col = (int)(Math.random()*NUM_COLS);
@@ -57,7 +57,12 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {  
-
+    for (int r = 0; r <NUM_ROWS; r++){
+        for(int c=0; c< NUM_COLS; c++){
+            if(bombs.contains(buttons[r][c] ))
+                buttons[r][c].clicked= true;
+        }
+    }
     buttons[9][6].setLabel("Y");
     buttons[9][7].setLabel("O");
     buttons[9][8].setLabel("U");
